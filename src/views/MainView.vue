@@ -10,15 +10,21 @@
             interfaces with accessibility in mind. They should also be excited to learn, as the
             world of Front-End Development keeps evolving.
           </div>
-          <img
-            class="hero__img"
-            src="@/assets/images/hero.jpeg"
-            width="1200"
-            height="600"
-            loading="eager"
-            fetchpriority="high"
-            alt="Main banner"
-          />
+
+          <picture>
+            <source srcset="@/assets/images/hero.jpeg" media="(min-width: 992px)" />
+            <source srcset="@/assets/images/hero.jpeg" media="(min-width: 768px)" />
+            <source srcset="@/assets/images/hero.jpeg" media="(min-width: 0px)" />
+            <img
+              class="hero__img"
+              src="@/assets/images/hero.jpeg"
+              width="500"
+              height="300"
+              loading="eager"
+              fetchpriority="high"
+              alt="Main banner"
+            />
+          </picture>
           <a href="#register"> <UiButton text="Sign up" /></a>
         </div>
       </section>
