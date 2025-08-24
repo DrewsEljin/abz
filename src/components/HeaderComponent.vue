@@ -4,8 +4,8 @@
     <div class="header__container">
       <RouterLink to="/"><img src="@/assets/images/Logo.svg" alt="logo" /></RouterLink>
       <div class="header__actions">
-        <UiButton text="Users" />
-        <UiButton text="Sign up" />
+        <a href="#users"> <UiButton text="Users" /> </a>
+        <a href="#register"> <UiButton text="Sign up" /> </a>
       </div>
     </div>
   </header>

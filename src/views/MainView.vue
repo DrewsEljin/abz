@@ -10,17 +10,17 @@
             interfaces with accessibility in mind. They should also be excited to learn, as the
             world of Front-End Development keeps evolving.
           </div>
-          <UiButton text="Sign up" />
+          <a href="#register"> <UiButton text="Sign up" /></a>
         </div>
       </section>
     </div>
-    <section class="users">
+    <section class="users" id="users">
       <div class="users__container">
         <h1 class="users__header">Working with GET request</h1>
         <UserListComponent :users="users" :nextUrl="nextUrl" @more="moreUsers()" />
       </div>
     </section>
-    <section class="register">
+    <section class="register" id="register">
       <FormComponent :positions="positions" @submit="loadUsers()" />
     </section>
   </main>
