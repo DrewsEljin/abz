@@ -15,9 +15,22 @@ export default defineConfig({
     port: Number(process.env.PORT) || 8080,
     allowedHosts: ['guidestones.onrender.com', 'localhost'],
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @use "@/assets/styles/_variables.scss" as *;
+          @use "@/assets/fonts/fonts.scss" as *;
+        `,
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
+  },
+  preview: {
+    allowedHosts: ['abz-t6ri.onrender.com'],
   },
 })

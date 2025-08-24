@@ -40,13 +40,13 @@ defineProps<{ items: Position[] }>()
   position: relative;
 }
 .radio-wrapper input[type='radio']:checked + .radio-dot {
-  border-color: #00bdd3;
+  border-color: $color-secondary;
 }
 .radio-wrapper input[type='radio']:checked + .radio-dot::after {
   content: '';
   width: 10px;
   height: 10px;
-  background-color: #00bdd3;
+  background-color: $color-secondary;
   border-radius: 50%;
   left: 50%;
   top: 50%;

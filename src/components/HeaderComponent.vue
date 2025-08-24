@@ -4,14 +4,16 @@
     <div class="header__container">
       <RouterLink to="/"><img src="@/assets/images/Logo.svg" alt="logo" /></RouterLink>
       <div class="header__actions">
-        <button class="btn">Users</button>
-        <button class="btn">Sign up</button>
+        <UiButton text="Users" />
+        <UiButton text="Sign up" />
       </div>
     </div>
   </header>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { UiButton } from './UI'
+</script>
 
 <style scoped lang="scss">
 .top-bar {

@@ -2,7 +2,9 @@
   <div :class="['input-wrapper', error && 'input-error']">
     <input :type="type" :id="id" placeholder=" " v-model="value" :autocomplete="type" />
     <label :for="id">{{ label }}</label>
-    <div v-if="error" class="input-message">{{ message }}</div>
+    <ul v-if="error" class="input-message">
+      <li v-for="error in messages">{{ (error as any).$message }}</li>
+    </ul>
   </div>
 </template>
 
@@ -13,7 +15,7 @@ defineProps({
   label: String,
   type: String,
   error: Boolean,
-  message: String,
+  messages: Array,
   id: String,
 })
 </script>
@@ -28,7 +30,7 @@ defineProps({
     background-color: inherit;
     line-height: 26px;
     font-size: inherit;
-    padding: 14px 16px;
+    padding: 13px 16px;
     border-radius: 4px;
     border: 1px solid #d0cfcf;
 
@@ -51,12 +53,13 @@ defineProps({
     left: 12px;
     overflow: auto;
     padding: 0 4px;
-    background-color: #f8f8f8;
+    background-color: $color-background;
     top: -12px;
   }
   &.input-error {
     input {
       border-color: #cb3d40;
+      border-width: 2px;
     }
     label {
       color: #cb3d40;
