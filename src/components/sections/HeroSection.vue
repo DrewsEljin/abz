@@ -10,14 +10,14 @@
       </div>
 
       <picture>
-        <source srcset="@/assets/images/hero.jpeg" media="(min-width: 992px)" />
-        <source srcset="@/assets/images/hero.jpeg" media="(min-width: 768px)" />
-        <source srcset="@/assets/images/hero.jpeg" media="(min-width: 0px)" />
+        <source srcset="@/assets/images/hero-1170.jpeg" media="(min-width: 992px)" />
+        <source srcset="@/assets/images/hero-768.jpeg" media="(min-width: 768px)" />
+        <source srcset="@/assets/images/hero-480.jpeg" media="(min-width: 0px)" />
         <img
           class="hero__img"
-          src="@/assets/images/hero.jpeg"
-          width="500"
-          height="300"
+          src="@/assets/images/hero-1170.jpeg"
+          width="1170"
+          height="650"
           loading="eager"
           fetchpriority="high"
           alt="Main banner"
