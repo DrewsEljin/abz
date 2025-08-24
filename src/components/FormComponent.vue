@@ -88,6 +88,8 @@ const submitForm = async () => {
     await postRegister(form)
     await emit('submit')
     await loadUsers()
+    const el = document.getElementById('users')
+    el?.scrollIntoView({ behavior: 'smooth' })
     isSuccess.value = true
   } catch (e: any) {
     console.error(e.message)
