@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="container">
-      <section class="hero">
+      <section class="hero" fetchpriority="high">
         <div class="hero__content">
           <h1 class="hero__header">Test assignment for front-end developer</h1>
           <div class="hero__desc">
