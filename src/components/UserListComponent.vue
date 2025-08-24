@@ -18,7 +18,7 @@ import { computed, ref } from 'vue'
 import UserComponent from './UserComponent.vue'
 import { UiTooltip, UiButton } from './UI'
 
-const props = defineProps<{ users: User[]; nextUrl: string }>()
+const props = defineProps<{ users: User[]; nextUrl: string | null }>()
 
 const tooltipVisible = ref(false)
 const tooltipText = ref('')

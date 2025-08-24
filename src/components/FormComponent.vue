@@ -47,11 +47,15 @@ import { required, email, helpers, minLength, maxLength } from '@vuelidate/valid
 import type { Position } from '@/types'
 import { postRegister } from '@/http/api'
 import UiButton from './UI/UiButton.vue'
+import { useUsers } from '@/composables/useUsers'
 
 defineProps<{ positions: Position[] }>()
 
 const fileInputRef = ref<HTMLInputElement | null>(null)
 const isSuccess = ref(false)
+
+const { loadUsers } = useUsers()
+
 const emit = defineEmits(['submit'])
 const form = reactive({
   name: '',
@@ -82,7 +86,8 @@ const submitForm = async () => {
   if (v$.value.$invalid) return
   try {
     await postRegister(form)
-    emit('submit')
+    await emit('submit')
+    await loadUsers()
     isSuccess.value = true
   } catch (e: any) {
     console.error(e.message)
