@@ -10,6 +10,15 @@
             interfaces with accessibility in mind. They should also be excited to learn, as the
             world of Front-End Development keeps evolving.
           </div>
+          <img
+            class="hero__img"
+            src="@/assets/images/hero.jpeg"
+            width="1200"
+            height="600"
+            loading="eager"
+            fetchpriority="high"
+            alt="Main banner"
+          />
           <a href="#register"> <UiButton text="Sign up" /></a>
         </div>
       </section>
@@ -71,15 +80,13 @@ async function moreUsers() {
 .hero {
   height: 650px;
   position: relative;
-  background-image: url('/src/assets/images/hero.jpeg');
-  background-repeat: no-repeat;
-  background-size: cover;
   z-index: 1;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow: hidden;
   &__content {
     display: flex;
     flex-direction: column;
@@ -92,6 +99,15 @@ async function moreUsers() {
   }
   &__desc {
     margin-bottom: 32px;
+  }
+  &__img {
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
   }
   // Blur for background image
   &::before {
