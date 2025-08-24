@@ -10,7 +10,7 @@ export async function getPositios() {
 }
 
 export async function getUsers(
-  url: string = 'https://frontend-test-assignment-api.abz.agency/api/v1/users',
+  url: string = 'https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6',
 ) {
   const { data } = await axios.get(url)
   return data

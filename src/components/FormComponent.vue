@@ -28,12 +28,7 @@
       :messages="v$.phone.$errors"
     />
     <UiRadio v-model:value="v$.position_id.$model" :items="positions" style="margin-top: -7px" />
-    <div :class="['upload-wrapper', v$.photo.$error && 'upload-error']">
-      <input type="file" id="file" @change="handleUpload" ref="fileInputRef" accept=".jpg,.jpeg" />
-      <label class="upload-btn" for="file">Upload</label>
-      <span class="upload-name">{{ v$.photo.$model?.name ?? 'Upload your photo' }}</span>
-    </div>
-
+    <UiUpload :error="v$.photo.$error" v-model:value="v$.photo.$model" />
     <UiButton text="Sign up" :disabled="v$.$invalid" type="submit" />
   </form>
   <img v-else src="@/assets/images/success-image.svg" alt="success" />
@@ -48,10 +43,9 @@ import type { Position } from '@/types'
 import { postRegister } from '@/http/api'
 import UiButton from './UI/UiButton.vue'
 import { useUsers } from '@/composables/useUsers'
+import UiUpload from './UI/UiUpload.vue'
 
 defineProps<{ positions: Position[] }>()
-
-const fileInputRef = ref<HTMLInputElement | null>(null)
 const isSuccess = ref(false)
 
 const { loadUsers } = useUsers()
@@ -79,6 +73,7 @@ const rules = {
   position_id: { required },
   photo: { required },
 }
+
 const v$ = useVuelidate(rules, form)
 
 const submitForm = async () => {
@@ -95,24 +90,6 @@ const submitForm = async () => {
     console.error(e.message)
   }
 }
-
-function handleUpload() {
-  const file = fileInputRef.value?.files?.[0] ?? null
-  if (!file) {
-    return
-  }
-  if (!['image/jpeg', 'image/jpg'].includes(file.type)) {
-    alert('Only JPG/JPEG')
-
-    return
-  }
-  if (file.size > 5 * 1024 * 1024) {
-    alert(`Maximum allowed size is ${5} MB`)
-    return
-  }
-
-  form.photo = fileInputRef.value?.files?.[0] ?? null
-}
 </script>
 
 <style scoped lang="scss">
@@ -123,39 +100,5 @@ form {
   gap: 50px;
   max-width: 380px;
   width: 100%;
-}
-
-.upload-wrapper {
-  display: flex;
-  align-self: flex-start;
-  width: 100%;
-  line-height: 26px;
-  & input[type='file'] {
-    display: none;
-  }
-}
-.upload-btn {
-  padding: 13px 15px;
-  border: 1px solid #000;
-  border-radius: 4px 0 0 4px;
-  text-align: center;
-  cursor: pointer;
-}
-.upload-name {
-  padding: 13px 15px;
-  width: 100%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  color: #7e7e7e;
-  border: 1px solid #d0cfcf;
-  border-left: 0;
-  border-radius: 0 4px 4px 0;
-}
-// Error styles
-.upload-error .upload-btn,
-.upload-error .upload-name {
-  border-color: #cb3d40;
-  border-width: 2px;
 }
 </style>
